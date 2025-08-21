@@ -15,7 +15,7 @@ resource "aws_lb" "istory_alb" {
 # ALB 타겟 그룹
 resource "aws_lb_target_group" "istory_tg" {
   name     = "istory-tg"
-  port     = 8080
+  port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.sh-vpc.id
 
@@ -23,8 +23,8 @@ resource "aws_lb_target_group" "istory_tg" {
     enabled             = true
     healthy_threshold   = 2
     interval            = 30
-    matcher            = "302"
-    path               = "/actuator/health"
+    matcher            = "200"
+    path               = "/"
     port               = "traffic-port"
     timeout            = 5
     unhealthy_threshold = 2
