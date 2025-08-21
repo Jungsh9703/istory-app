@@ -12,8 +12,8 @@ resource "aws_security_group" "istory_nginx_sg" {
 
   ingress {
     description = "Allow HTTP"
-    from_port   = 8080
-    to_port     = 8080
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -32,7 +32,15 @@ resource "aws_security_group" "istory_prod_ec2_sg" {
   vpc_id      = aws_vpc.sh-vpc.id
 
   ingress {
-    description     = "Allow HTTP from ALB"
+    description     = "Allow HTTP 80 from ALB"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
+    security_groups = [aws_security_group.istory_alb_sg.id]
+  }
+
+  ingress {
+    description     = "Allow HTTP 8080 from ALB"
     from_port       = 8080
     to_port         = 8080
     protocol        = "tcp"

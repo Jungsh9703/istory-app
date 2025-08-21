@@ -33,7 +33,7 @@ fi
 
 # 애플리케이션 시작
 cd /home/ec2-user/app
-nohup java -jar *.jar > /home/ec2-user/app/logs/application.log 2>&1 &
+nohup java -jar *.jar --server.port=8080 > /home/ec2-user/app/logs/application.log 2>&1 &
 echo $! > /home/ec2-user/app/pid.file
 
 # 시작 대기

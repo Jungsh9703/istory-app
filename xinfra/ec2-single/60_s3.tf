@@ -1,7 +1,6 @@
 # S3 버킷 생성
 resource "aws_s3_bucket" "istory-deploy-bucket" {
   bucket = "istory-deploy-bucket-${data.aws_caller_identity.current.account_id}"  # 고유한 버킷 이름 필요
-  force_destroy = true
 }
 
 # S3 버킷 버전 관리 설정

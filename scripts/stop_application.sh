@@ -1,6 +1,6 @@
 #!/bin/bash
 # 이전 프로세스 종료
-CURRENT_PID=$(pgrep -f istory-*.jar)
+CURRENT_PID=$(pgrep -f "java -jar.*\.jar")
 
 if [ -z "$CURRENT_PID" ]; then
     echo "No spring boot application is running."
